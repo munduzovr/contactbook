@@ -2,28 +2,22 @@ import Cards from './components/Container/Cards/Cards';
 import Container from './components/Container/Container';
 import React,{ useState } from "react";
 function App() {
-  
-  const [nameVal, setNameVal] = useState("");
-  const [numberval, setNumberVal] = useState("");
+  const[image,setImage] = useState([]);
+  const[contact, setContact] = useState([]);
+  const[number,setNumber] = useState([]);
 
-  let contactObj ={
-    name: nameVal,
-    number: numberval
+function handleBook(newObj){
+  let newList = [...image,...contact,...number];
+  newList.push(newObj);
+  setImage(newList);
+  setContact(newList);
+  setNumber(newList);
 }
 
-  function nameInputChange(e){
-          setNameVal(e.target.value);
-          
-  }
-  function numberInputChange(e){
-      setNumberVal(e.target.value);
-      
-  }
-  console.log(contactObj)
   return (
     <div>
-      <Container nameInputChange={nameInputChange} numberInputChange={numberInputChange} obj={contactObj}/>
-      <Cards contactObj={contactObj}/>
+      <Container handleBook={handleBook}/>
+      <Cards image={image} contact={contact} number={number}/>
     </div>
   );
 }

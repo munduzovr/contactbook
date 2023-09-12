@@ -1,12 +1,21 @@
 import React from 'react';
 
-const Cards = (props) => {
-    //console.log(props)
+const Cards = ({image,contact,number}) => {
+    console.log(image);
     return (
         <div className="contacts">
-        <img src="" alt="icon" />
-        <p>{props.contactObj.name}</p>
-        <p>{props.contactObj.number}</p>
+        <h2>Contact</h2>
+        <ul>
+            
+            { image.map((item)=>(
+                    <li key={item.id}>
+                        <img src={item.imgVal} alt="" />
+                        <p src={contact.nameVal}></p>
+                        <p src={number.nameVal}></p>
+                    </li>
+                ))}
+        </ul>
+
         </div>
     );
 };
